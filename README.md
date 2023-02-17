@@ -1,7 +1,7 @@
 Goal
 ===========================
 
-My chinese doorbell may stream audio from builtin mic to client. This feature available only in mobile App client. It is also available on PC through web UI but IE browser as client and ActiveX installed required. Since Microsoft drops IE (https://blogs.windows.com/windowsexperience/2022/06/15/internet-explorer-11-has-retired-and-is-officially-out-of-support-what-you-need-to-know/) i started to find a solution how to stream audio to PC without IE.
+My chinese video doorbell may stream audio from built-in mic to client. This feature available only in mobile App client. It is also available on PC through web UI but IE browser as client and ActiveX installed required. Since Microsoft drops IE (https://blogs.windows.com/windowsexperience/2022/06/15/internet-explorer-11-has-retired-and-is-officially-out-of-support-what-you-need-to-know/) i started to find a solution how to stream audio to PC without IE.
 
 This solution is based on https://github.com/smartin015/KaicongWiFiCameraControl. For this purpose i've adopted KaicongAudio.py. I get rid from urllib2 as 
 
@@ -10,7 +10,7 @@ This solution is based on https://github.com/smartin015/KaicongWiFiCameraControl
 
 Usage
 ===========================
-python StreamAudio.py <camer ip or host name>
+python StreamAudio.py <doorbell ip or host name>
 
 Dependencies:
 ===========================
