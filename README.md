@@ -8,10 +8,17 @@ This solution is based on https://github.com/smartin015/KaicongWiFiCameraControl
 1. It is no longer available in latest Python.
 2. I ecounter with problem that my doorbell uses "fake" HTTP and (at least) new urllib implementation can't recognize HTTP response that doorbell send (https://stackoverflow.com/questions/75469992/python-status-code-missing-in-http-response). I have to replace urllib with sockets to workaround this.
 
+Usage
+===========================
+python StreamAudio.py <camer ip or host name>
+
 Dependencies:
+===========================
 * Python 2.7
 * Python OpenCV
 * PyAudio
 * PyGame
 
-An instructable is available [HERE](http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/).
+Links: 
+===========================
+[HERE](http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/).
