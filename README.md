@@ -6,7 +6,7 @@ My chinese doorbell may stream audio from builtin mic to client. This feature av
 This solution is based on https://github.com/smartin015/KaicongWiFiCameraControl. For this purpose i've adopted KaicongAudio.py. I get rid from urllib2 as 
 
 1. It is no longer available in latest Python.
-2. I ecounter with problem that my doorbell uses "fake" HTTP and new urllib implementation can't recognize HTTP response that doorbell send (https://stackoverflow.com/questions/75469992/python-status-code-missing-in-http-response). I have to replace urllib with sockets to workaround this.
+2. I ecounter with problem that my doorbell uses "fake" HTTP and (at least) new urllib implementation can't recognize HTTP response that doorbell send (https://stackoverflow.com/questions/75469992/python-status-code-missing-in-http-response). I have to replace urllib with sockets to workaround this.
 
 Dependencies:
 * Python 2.7
