@@ -10,7 +10,7 @@ This solution is based on https://github.com/smartin015/KaicongWiFiCameraControl
 
 Usage
 ===========================
-python StreamAudio.py <doorbell ip or host name>
+python StreamAudio.py <<doorbell ip or host name>>
 
 Dependencies:
 ===========================
