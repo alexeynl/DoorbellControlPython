@@ -21,4 +21,4 @@ Dependencies:
 
 Links: 
 ===========================
-[HERE](http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/).
+Original author post: http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/).
