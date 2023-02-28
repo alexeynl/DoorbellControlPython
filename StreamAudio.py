@@ -11,7 +11,7 @@ class KaicongAudio(KaicongInput):
     
     URI = "http://%s:81/audiostream.cgi?user=%s&pwd=%s&streamid=2&filename="
     
-    def __init__(self, domain, callback=None, user="admin", pwd="123456"):
+    def __init__(self, domain, callback=None, user="admin", pwd="loxloxlox"):
         KaicongInput.__init__(
             self, 
             callback,
@@ -26,18 +26,23 @@ class KaicongAudio(KaicongInput):
         # Strip the header at the beginning of the data
         data = data[KaicongAudio.HEADER_SZ:]
         
+        #print (data)
+        #print (len(data))
+        
         # Decompress from ADPCM (differential) to PCM-16L (WAV) format
-        result = ""
+        result = bytes()
         state = None
-        for i in xrange(0, len(data), KaicongAudio.SAMPLE_SZ):
+        for i in range(0, len(data), KaicongAudio.SAMPLE_SZ):
+            #print (i)
             adpcmfragment = data[i:i+KaicongAudio.SAMPLE_SZ]
+            #print (adpcmfragment)
             (sample, state) = audioop.adpcm2lin(
                                 adpcmfragment, 
                                 KaicongAudio.SAMPLE_SZ, 
                                 state)
             result += sample
     
-        print len(result)
+        #print (len(result))
         return result
         
         
@@ -49,7 +54,7 @@ if __name__ == "__main__":
     import wave 
 
     if len(sys.argv) != 2:
-        print "Usage: %s <ip_address>" % sys.argv[0]
+        print ("Usage: %s <ip_address>" % sys.argv[0])
         sys.exit(-1)
     
     class Speaker:
@@ -74,7 +79,7 @@ if __name__ == "__main__":
         
     spkr = Speaker()    
     def play(data):
-        spkr.play(np.fromstring(data, dtype=np.int16))
+        spkr.play(np.frombuffer(data, dtype=np.int16))
             
     audio = KaicongAudio(sys.argv[1], play)
     audio.run()

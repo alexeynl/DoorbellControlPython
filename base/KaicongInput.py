@@ -1,5 +1,6 @@
 #import threading
-import urllib2
+import socket
+from urllib.parse import urlparse
 
 #TODO: Extend threading.Thread
 class KaicongInput():
@@ -13,10 +14,15 @@ class KaicongInput():
         self.packet_size = packet_size
         self.uri = uri_format % (domain, user, pwd)
         self.stream = None
+        self.domain = domain
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     def connect(self):
-        print "Opening url: %s" % self.uri
-        self.stream = urllib2.urlopen(self.uri)
+        print ("Opening url: %s" % self.uri)
+        url = urlparse(self.uri)
+        self.socket.connect((self.domain, 81))
+        self.socket.send(b"GET %s HTTP/1.1\r\nHost:%s\r\n\r\n" % ( str.encode(url.path+"?"+url.query), str.encode(self.domain)))
+        self.stream = self.socket.recv(self.packet_size)
         
         if not self.stream:
             raise Exception("Error connecting")
@@ -33,25 +39,25 @@ class KaicongInput():
         # Loop for things like Video, where multiple reads required to
         # retrieve a frame.
         while not result:
-            result = self.handle(self.stream.read(self.packet_size))
+            result = self.handle(self.socket.recv(self.packet_size))
         return result
     
     def run(self):
         try:
             if self.stream:
-                self.stream.close()
+                self.socket.close()
         
             self.connect()
             self.running = True
             
             while self.running:
-                result = self.handle(self.stream.read(self.packet_size))
+                result = self.handle(self.socket.recv(self.packet_size))
                 if result:
                     self.callback(result)
         
         finally:
             if self.stream:
-                self.stream.close()
+                self.socket.close()
                 
                 
                 
