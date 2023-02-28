@@ -83,5 +83,3 @@ if __name__ == "__main__":
             
     audio = KaicongAudio(sys.argv[1], play)
     audio.run()
-    
-        
